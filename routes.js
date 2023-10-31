@@ -1,5 +1,7 @@
 const express = require("express");
 const userModel = require("./models");
+const Collection_1 = require("./models")
+const Collection_2 = require("./models")
 const app = express();
 
 app.post("/add_user", async (request, response) => {
@@ -14,7 +16,7 @@ app.post("/add_user", async (request, response) => {
 });
 
 app.get("/users", async (request, response) => {
-    const users = await userModel.find({});
+    const users = await Collection_2.find({}).populate("userId", null, "collection_1").exec();
   
     try {
       response.send(users);
